@@ -1,0 +1,175 @@
+[
+    {
+        "id": "Q01",
+        "question": "What information should be confirmed before construction begins?",
+        "answerable": true,
+        "expected_keywords": [
+            "architectural",
+            "structural",
+            "site survey",
+            "soil",
+            "approval"
+        ]
+    },
+    {
+        "id": "Q02",
+        "question": "What should be confirmed regarding staircase dimensions before execution?",
+        "answerable": true,
+        "expected_keywords": [
+            "staircase",
+            "dimensions",
+            "headroom",
+            "handrails"
+        ]
+    },
+    {
+        "id": "Q03",
+        "question": "What should be confirmed about toilet and sunk-slab locations?",
+        "answerable": true,
+        "expected_keywords": [
+            "toilet",
+            "sunk slab",
+            "plumbing"
+        ]
+    },
+    {
+        "id": "Q04",
+        "question": "What information is required from the site survey before construction?",
+        "answerable": true,
+        "expected_keywords": [
+            "plot boundary",
+            "dimensions",
+            "levels",
+            "road level",
+            "utilities"
+        ]
+    },
+    {
+        "id": "Q05",
+        "question": "What should be verified regarding soil and geotechnical parameters?",
+        "answerable": true,
+        "expected_keywords": [
+            "soil",
+            "groundwater",
+            "foundation",
+            "geotechnical"
+        ]
+    },
+    {
+        "id": "Q06",
+        "question": "What information should be included in the BOQ or tender documentation?",
+        "answerable": true,
+        "expected_keywords": [
+            "BOQ",
+            "quantities",
+            "scope",
+            "item descriptions",
+            "payment"
+        ]
+    },
+    {
+        "id": "Q07",
+        "question": "What should be confirmed about construction drawings before execution?",
+        "answerable": true,
+        "expected_keywords": [
+            "drawings",
+            "approved",
+            "GFC",
+            "As-Built",
+            "revision"
+        ]
+    },
+    {
+        "id": "Q08",
+        "question": "Why should home-theatre requirements be frozen early?",
+        "answerable": true,
+        "expected_keywords": [
+            "acoustics",
+            "HVAC",
+            "electrical",
+            "AV"
+        ]
+    },
+    {
+        "id": "Q09",
+        "question": "What should be considered when planning the construction budget?",
+        "answerable": true,
+        "expected_keywords": [
+            "budget",
+            "cost",
+            "construction"
+        ]
+    },
+    {
+        "id": "Q10",
+        "question": "What should be considered when resolving conflicting structural parameters?",
+        "answerable": true,
+        "expected_keywords": [
+            "structural",
+            "engineer",
+            "foundation",
+            "SBC"
+        ]
+    },
+
+    {
+        "id": "Q11",
+        "question": "Who is the current CEO of NVIDIA?",
+        "answerable": false,
+        "expected_keywords": []
+    },
+    {
+        "id": "Q12",
+        "question": "What is the stock price of Microsoft today?",
+        "answerable": false,
+        "expected_keywords": []
+    },
+    {
+        "id": "Q13",
+        "question": "What is the population of India?",
+        "answerable": false,
+        "expected_keywords": []
+    },
+    {
+        "id": "Q14",
+        "question": "What is the capital of France?",
+        "answerable": false,
+        "expected_keywords": []
+    },
+    {
+        "id": "Q15",
+        "question": "Who founded Google?",
+        "answerable": false,
+        "expected_keywords": []
+    },
+    {
+        "id": "Q16",
+        "question": "What is the current price of Bitcoin?",
+        "answerable": false,
+        "expected_keywords": []
+    },
+    {
+        "id": "Q17",
+        "question": "What is the weather in Delhi today?",
+        "answerable": false,
+        "expected_keywords": []
+    },
+    {
+        "id": "Q18",
+        "question": "What is the GDP of the United States?",
+        "answerable": false,
+        "expected_keywords": []
+    },
+    {
+        "id": "Q19",
+        "question": "What is the latest version of Python?",
+        "answerable": false,
+        "expected_keywords": []
+    },
+    {
+        "id": "Q20",
+        "question": "Who won the latest FIFA World Cup?",
+        "answerable": false,
+        "expected_keywords": []
+    }
+]
