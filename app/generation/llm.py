@@ -19,9 +19,7 @@ class LLMGenerator:
         model: str = "gemini-3.6-flash"
     ):
 
-        api_key = os.getenv(
-            "GEMINI_API_KEY"
-        )
+        api_key = os.getenv("GEMINI_API_KEY")
 
         if not api_key:
             raise ValueError(
@@ -41,14 +39,19 @@ class LLMGenerator:
         context: str
     ) -> str:
 
+        # --------------------------------------------------
+        # 1. Evidence safety check
+        # --------------------------------------------------
         if not context.strip():
-
             return (
                 "I couldn't find sufficient information "
                 "in the provided documents to answer "
                 "this question."
             )
 
+        # --------------------------------------------------
+        # 2. Grounded generation prompt
+        # --------------------------------------------------
         prompt = f"""
 You are an intelligent document analysis assistant.
 
@@ -88,6 +91,7 @@ STRICT RULES:
 
 10. Do not invent source numbers.
 
+
 DOCUMENT SOURCES:
 ==================================================
 
@@ -104,7 +108,9 @@ USER QUESTION:
 ANSWER WITH CITATIONS:
 """
 
-        # Retry temporary Gemini server errors
+        # --------------------------------------------------
+        # 3. Gemini generation
+        # --------------------------------------------------
         for attempt in range(3):
 
             try:
@@ -116,9 +122,52 @@ ANSWER WITH CITATIONS:
 
                 return response.text
 
+            # --------------------------------------------------
+            # Temporary Gemini server failure
+            # --------------------------------------------------
             except errors.ServerError:
 
                 if attempt == 2:
-                    raise
+                    return (
+                        "Gemini is temporarily unavailable. "
+                        "Please try again in a moment."
+                    )
 
                 time.sleep(2 ** attempt)
+
+            # --------------------------------------------------
+            # Gemini client errors
+            # --------------------------------------------------
+            except errors.ClientError as e:
+
+                status_code = getattr(e, "code", None)
+
+                # 429 = rate limit / quota exhausted
+                if status_code == 429:
+
+                    return (
+                        "The Gemini API quota has been exceeded. "
+                        "The document retrieval and evidence pipeline "
+                        "worked successfully, but Gemini cannot "
+                        "generate the final answer right now. "
+                        "Please try again after the API quota resets "
+                        "or use an API key with available quota."
+                    )
+
+                # Other client-side API errors
+                return (
+                    "Gemini could not generate the answer because "
+                    "the API request was rejected. "
+                    f"API error: {e}"
+                )
+
+            # --------------------------------------------------
+            # Any other Gemini API error
+            # --------------------------------------------------
+            except errors.APIError as e:
+
+                return (
+                    "Gemini could not generate the answer because "
+                    "of an API error. "
+                    f"API error: {e}"
+                )
